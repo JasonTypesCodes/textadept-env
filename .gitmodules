@@ -1,3 +1,6 @@
 [submodule "themes"]
 	path = themes
 	url = https://github.com/rgieseke/ta-themes.git
+[submodule "modules/rust"]
+	path = modules/rust
+	url = https://github.com/abaez/ta-rust.git
