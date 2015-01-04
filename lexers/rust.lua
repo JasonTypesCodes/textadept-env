@@ -15,31 +15,36 @@ local block_comment = '/*' * (l.any - '*/')^0 * P('*/')^-1
 local comment = token(l.COMMENT, line_comment + block_comment)
 
 -- Strings.
---local sq_str = P('L')^-1 * l.delimited_range("'", true)
-local dq_str = P('L')^-1 * l.delimited_range('"', true)
---local string = token(l.STRING, sq_str + dq_str)
+local sq_str = P('L')^-1 * l.delimited_range("'")
+local dq_str = P('L')^-1 * l.delimited_range('"')
+local raw_str = P('L')^-1 * l.delimited_range('##', true)
 local string = token(l.STRING, dq_str)
 
 -- Numbers.
-local number = token(l.NUMBER, l.float + "0b" * l.integer + "0o" * l.integer +
-  l.integer)
+local number = token(l.NUMBER, l.float + l.hex_num + l.oct_num +
+                     "0b" * l.integer + l.integer)
 
 -- Keywords.
 local keyword = token(l.KEYWORD, word_match{
-  'as', 'box', 'break',
-  'continue', 'crate',
-  'else', 'enum', 'extern',
-  'false', 'fn', 'for',
-  'if', 'impl', 'in',
-  'let', 'loop',
-  'match', 'mod', 'mut',
-  'priv', 'proc', 'pub',
-  'ref', 'return',
-  'self', 'static', 'struct', 'super',
-  'true', 'trait', 'type',
-  'unsafe', 'use',
-  'while'
+  'abstract', 'alignof', 'as', 'box',
+  'break', 'const', 'continue', 'crate', 'do',
+  'else', 'enum', 'extern', 'false', 'final',
+  'fn', 'for', 'if', 'impl', 'in',
+  'let', 'loop', 'match', 'mod', 'move',
+  'mut', "offsetof", 'override', 'priv', 'pub',
+  'pure', 'ref', 'return', 'sizeof', 'static',
+  'self', 'struct', 'super', 'true', 'trait',
+  'type', 'typeof', 'unsafe', 'unsized', 'use',
+  'virtual', 'where', 'while', 'yield'
 })
+
+-- Library types
+local library = token(l.LABEL, l.upper * l.lower^0)
+
+-- syntax extensions
+local extension = l.word^0 * S("!")
+
+local func = token(l.FUNCTION, extension)
 
 -- Types.
 local type = token(l.TYPE, word_match{
@@ -60,6 +65,8 @@ local attribute = token(l.PREPROCESSOR, "#[" * l.nonnewline^0 * "]")
 M._rules = {
   {'whitespace', ws},
   {'keyword', keyword},
+  {'function', func},
+  {'library', library},
   {'type', type},
   {'identifier', identifier},
   {'string', string},
