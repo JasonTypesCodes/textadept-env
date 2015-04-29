@@ -4,3 +4,6 @@
 [submodule "modules/rust"]
 	path = modules/rust
 	url = https://github.com/abaez/ta-rust.git
+[submodule "modules/textadept_swm"]
+	path = modules/textadept_swm
+	url = https://github.com/lundmark/textadept_swm
