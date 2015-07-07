@@ -5,8 +5,6 @@ end
 buffer.edge_column = 120
 buffer.edge_mode = buffer.EDGE_LINE
 
-require('textadept_swm')
-
 -- Adds rust support
 textadept.file_types.extensions.rs = 'rust'
 
