@@ -14,13 +14,13 @@ textadept.file_types.extensions.gradle = 'groovy'
 -- Use HTML lexer for GSP files
 textadept.file_types.extensions.gsp = 'html'
 
-
 local folders_to_ignore = {
   '%.gradle$',
   'node_modules$',
   'bower_components$',
   'target$',
-  'build$'
+  'build$',
+  'dist$'
 }
 
 for i = 1, #folders_to_ignore do
