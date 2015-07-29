@@ -1,6 +1,7 @@
 [submodule "themes"]
 	path = themes
-	url = https://github.com/rgieseke/ta-themes.git
+	url = https://github.com/VoltiSubito/textadept-themes.git
+	branch = two-worlds-combined 
 [submodule "modules/rust"]
 	path = modules/rust
 	url = https://github.com/abaez/ta-rust.git
