@@ -14,6 +14,8 @@ textadept.file_types.extensions.gradle = 'groovy'
 -- Use HTML lexer for GSP files
 textadept.file_types.extensions.gsp = 'html'
 
+textadept.file_types.extensions.feature = 'gherkin'
+
 local folders_to_ignore = {
   '%.gradle$',
   'node_modules$',
