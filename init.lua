@@ -1,5 +1,5 @@
 if not CURSES then 
-  ui.set_theme('base16-brewer-dark', {font ='Source Code Pro Semibold', fontsize = 11}) 
+  ui.set_theme('base16-bright-dark', {font ='Source Code Pro Semibold', fontsize = 11})
 end
 
 buffer.edge_column = 120
@@ -20,7 +20,12 @@ local folders_to_ignore = {
   'bower_components$',
   'target$',
   'build$',
-  'dist$'
+  'dist$',
+  '%.idea$',
+  '%.jruby%-container$',
+  '%.sass%-cache$',
+  'out$',
+  'gradle$'
 }
 
 for i = 1, #folders_to_ignore do
