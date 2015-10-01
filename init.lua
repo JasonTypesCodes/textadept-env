@@ -22,7 +22,12 @@ local folders_to_ignore = {
   'bower_components$',
   'target$',
   'build$',
-  'dist$'
+  'dist$',
+  '%.idea$',
+  '%.jruby%-container$',
+  '%.sass%-cache$',
+  'out$',
+  'gradle$'
 }
 
 for i = 1, #folders_to_ignore do
