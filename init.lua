@@ -1,5 +1,5 @@
 if not CURSES then 
-  ui.set_theme('base16-brewer-dark', {font ='Source Code Pro Semibold', fontsize = 11}) 
+  ui.set_theme('base16-chalk-dark', {font ='Source Code Pro Semibold', fontsize = 11}) 
 end
 
 buffer.edge_column = 120
