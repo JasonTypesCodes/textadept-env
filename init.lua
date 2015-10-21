@@ -1,20 +1,14 @@
 if not CURSES then 
-  ui.set_theme('base16-chalk-dark', {font ='Source Code Pro Semibold', fontsize = 11}) 
+  ui.set_theme('base16-atelierdune-dark', {font ='Source Code Pro Semibold', fontsize = 11}) 
 end
 
 buffer.edge_column = 120
 buffer.edge_mode = buffer.EDGE_LINE
 
--- Adds rust support
+-- Lexer associations
 textadept.file_types.extensions.rs = 'rust'
-
--- Use Groovy lexer for gradle files
 textadept.file_types.extensions.gradle = 'groovy'
-
--- Use HTML lexer for GSP files
 textadept.file_types.extensions.gsp = 'html'
-
-textadept.file_types.extensions.feature = 'gherkin'
 
 local folders_to_ignore = {
   '%.gradle$',
@@ -26,10 +20,24 @@ local folders_to_ignore = {
   '%.idea$',
   '%.jruby%-container$',
   '%.sass%-cache$',
+  '%.sass%-work$',
   'out$',
   'gradle$'
 }
 
 for i = 1, #folders_to_ignore do
   table.insert(lfs.FILTER.folders, folders_to_ignore[i])
+end
+
+io.SNAPOPEN_MAX = 5000
+
+local textredux = require('textredux')
+textredux.hijack()
+
+keys[not OSX and (not CURSES and 'caP' or 'cmp') or 'cmP'] = function()
+  textredux.fs.snapopen(io.get_project_root())
+end
+
+keys[not OSX and 'cu' or 'mu'] = function()
+  textredux.fs.snapopen(_USERHOME)
 end
