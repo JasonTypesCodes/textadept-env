@@ -34,10 +34,6 @@ io.SNAPOPEN_MAX = 5000
 local textredux = require('textredux')
 textredux.hijack()
 
-keys[not OSX and (not CURSES and 'caP' or 'cmp') or 'cmP'] = function()
-  textredux.fs.snapopen(io.get_project_root())
-end
-
 keys[not OSX and 'cu' or 'mu'] = function()
   textredux.fs.snapopen(_USERHOME)
 end
