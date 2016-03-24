@@ -1,0 +1,9 @@
+[submodule "themes"]
+	path = themes
+	url = https://github.com/rgieseke/textadept-themes
+[submodule "modules/textredux"]
+	path = modules/textredux
+	url = https://github.com/rgieseke/textredux
+[submodule "modules/rust"]
+	path = modules/rust
+	url = https://github.com/abaez/ta-rust
